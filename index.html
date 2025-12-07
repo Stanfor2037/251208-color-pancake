@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>color pancake</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Lora&family=M+PLUS+1p&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 開始畫面 -->
+    <div class="start-screen" id="startScreen">
+        <img src="start-button.png"
+             alt="Start Game"
+             class="start-button"
+             onclick="startGame()">
+    </div>
+
+    <!-- 計時器 -->
+    <div class="timer-box">
+        <div class="timer-label">TIME:</div>
+        <div class="timer-value" id="timer">01:00</div>
+    </div>
+
+    <!-- 分數 -->
+    <div class="score-box">
+        <div class="score-label">SCORE:</div>
+        <div class="score-value" id="score">00</div>
+    </div>
+
+    <!-- 玩家名字 -->
+    <div class="player-box">
+        <div class="player-name">PLAYER: <span id="playerName">Ben</span></div>
+    </div>
+
+    <!-- 漢堡選單 -->
+    <div class="menu-button" onclick="toggleMenu()">
+        <div class="menu-line"></div>
+        <div class="menu-line"></div>
+        <div class="menu-line"></div>
+    </div>
+
+    <!-- 選單面板 -->
+    <div class="menu-panel" id="menuPanel">
+        <div class="menu-item" onclick="resetGame()">RESTART</div>
+        <div class="menu-item" onclick="pauseGame()">STOP</div>
+        <div class="menu-item" onclick="changePlayer()">CHANGE PLAYER</div>
+        <div class="menu-item" onclick="toggleMenu()">CLOSE MENU</div>
+    </div>
+
+    <!-- 題目區域 -->
+    <div class="question-area">
+        <div class="magnifier">
+            <div class="character-display" id="character">Yellow</div>
+        </div>
+        
+        <!-- 側邊按鈕 -->
+        <div class="side-buttons">
+            <div class="side-button">
+                <div class="side-button-inner"></div>
+            </div>
+            <div class="side-button">
+                <div class="side-button-inner"></div>
+            </div>
+            <div class="side-button">
+                <div class="side-button-inner"></div>
+            </div>
+        </div>
+
+        <!-- 答案按鈕 -->
+        <div class="answer-buttons" id="answerButtons"></div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+    <!-- 遊戲結束畫面 -->
+    <div class="end-screen" id="endScreen">
+        <img src="end.png" alt="Game Over" class="end-image">
+    </div>
+</body>
+</html>

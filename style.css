@@ -1,0 +1,384 @@
+/* ===== 開始畫面 ===== */
+.start-screen {
+    position: fixed;
+    inset: 0;                           /* top:0; right:0; bottom:0; left:0; */
+    background-image: url('start-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: flex-end;              /* 按鈕在底部中間 */
+    justify-content: center;
+    padding-bottom: 80px;               /* 按鈕離底部一點距離 */
+
+    z-index: 999;                       /* 蓋在所有遊戲畫面上 */
+}
+
+/* 開始按鈕 */
+.start-button {
+    cursor: pointer;
+    max-width: 50vw;                    /* 依螢幕縮放 */
+    height: auto;
+    user-select: none;
+    -webkit-user-drag: none;
+    transition: transform 0.1s ease;
+}
+
+.start-button:hover {
+    transform: scale(1.05);
+}
+
+.start-button:active {
+    transform: scale(0.97);
+}
+
+/* 左上計時器 */
+.timer-box {
+    position: absolute;
+    left: 60px;
+    top: 60px;
+    width: 400px;
+    background: transparent;
+    border: none;
+    border-radius: 40px;
+    padding: 30px;
+    z-index: 10;
+}
+
+.timer-label {
+    font-size: 60px;
+    font-weight: 400;
+    color: #2C1810;
+    text-align: center;
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+}
+
+.timer-value {
+    font-size: 120px;
+    font-weight: 400;
+    color: #2C1810;
+    text-align: center;
+    letter-spacing: 5px;
+}
+
+/* 左下分數 */
+.score-box {
+    position: absolute;
+    left: 60px;
+    top: 450px;
+    width: 400px;
+    background: transparent;
+    border: none;
+    border-radius: 40px;
+    padding: 30px;
+    z-index: 10;
+}
+
+.score-label {
+    font-size: 60px;
+    font-weight: 400;
+    color: #FFD700;
+    text-align: center;
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+}
+
+.score-value {
+    font-size: 120px;
+    font-weight: 400;
+    color: #FFD700;
+    text-align: center;
+    letter-spacing: 5px;
+}
+
+/* 中上玩家名字*/
+.player-box {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    width: 1920px;
+    height: 1080px;
+    font-family: 'Anton', sans-serif;
+    overflow: hidden;
+    position: relative;
+    /* 最底層背景 - bg.jpg */
+    background-image: url('bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* 第二層背景 - bg_2.png */
+body::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('bg_2.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+
+/* 左上計時器 - 只顯示文字 */
+.timer-box {
+    position: absolute;
+    left: 150px;
+    top: 130px;
+    width: 400px;
+    z-index: 10;
+}
+
+.timer-label {
+    font-size: 80px;
+    font-weight: 400;
+    color: #2C1810;
+    text-align: center;
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+}
+
+.timer-value {
+    font-size: 120px;
+    font-weight: 400;
+    color: #2C1810;
+    text-align: center;
+    letter-spacing: 5px;
+}
+
+/* 左下分數 - 只顯示文字 */
+.score-box {
+    position: absolute;
+    left: 150px;
+    top: 600px;
+    width: 400px;
+    z-index: 10;
+}
+
+.score-label {
+    font-size: 80px;
+    font-weight: 400;
+    color: #FFD700;
+    text-align: center;
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+}
+
+.score-value {
+    font-size: 120px;
+    font-weight: 400;
+    color: #FFD700;
+    text-align: center;
+    letter-spacing: 5px;
+}
+
+/* 中上玩家名字 - 只顯示文字 */
+.player-box {
+    position: absolute;
+    left: 1100px;
+    transform: translateX(-50%);
+    top: 30px;
+    z-index: 10;
+}
+
+.player-name {
+    font-size: 70px;
+    font-weight: 400;
+    color: #C0C0C0;
+    text-align: center;
+    letter-spacing: 3px;
+}
+
+/* 右上漢堡選單 */
+.menu-button {
+    position: absolute;
+    left: 1590px;
+    top: 10px;
+    width: 120px;
+    height: 120px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    transition: transform 0.2s;
+    z-index: 10;
+}
+
+.menu-button:hover {
+    transform: scale(1.05);
+}
+
+.menu-line {
+    width: 70px;
+    height: 12px;
+    background: #C0C0C0;
+    border-radius: 6px;
+}
+
+/* 右下題目區域 - 移除背景，只顯示放大鏡和顏色 */
+.question-area {
+    position: absolute;
+    right: 150px;
+    bottom: 60px;
+    width: 1200px;
+    height: 750px;
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.magnifier {
+    width: 600px;
+    height: 600px;
+    background: #000;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.magnifier::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    right: -80px;
+    width: 150px;
+    height: 40px;
+    background: transparent;
+    border-radius: 10px;
+    transform: rotate(-45deg);
+}
+
+.character-display {
+    font-size: 280px;
+    font-weight: 400;
+    color: white;
+    z-index: 1;
+    animation: fadeIn 0.5s;
+    font-family: 'M PLUS 1p', sans-serif;
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: scale(0.8); 
+    }
+    to { 
+        opacity: 1; 
+        transform: scale(1); 
+    }
+}
+
+/* 側邊按鈕 - 隱藏 */
+.side-buttons {
+    display: none;
+}
+
+/* 選單面板 */
+.menu-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 400px;
+    height: 100vh;
+    background-color: #2b1b12;
+    box-shadow: -4px 0 10px rgba(0, 0, 0, 0.4);
+    padding: 20px 30px;
+    transform: translateX(100%);             /* ✅ 一開始整個在畫面右邊外面 */
+    opacity: 0;
+    pointer-events: none;                    /* 看不到的時候也點不到 */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 20;
+}
+
+/* 按漢堡或 CLOSE MENU 之後切換 active：滑出來 */
+.menu-panel.active {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.menu-item {
+    font-family: 'Anton', sans-serif !important;
+    font-size: 50px;
+    font-weight: 300;
+    color: #FFD700;
+    padding: 30px;
+    margin: 20px 0;
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s;
+    letter-spacing: 2px;
+    font-family: 'M PLUS 1p', sans-serif;
+}
+
+.menu-item:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateX(-10px);
+}
+
+/* 答案按鈕 - 隱藏 */
+.answer-buttons {
+    display: none;
+}
+
+.end-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.end-screen.active {
+    display: flex;
+    animation: fadeIn 0.5s;
+}
+
+.end-image {
+    max-width: 60%;
+    max-height: 60%;
+    object-fit: contain;
+    cursor: pointer;
+    animation: scaleIn 0.5s;
+    transition: transform 0.3s;
+}
+
+.end-image:hover {
+    transform: scale(1.05);
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
